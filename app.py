@@ -59,7 +59,7 @@ def apple_news():
         if index == 5:
             return content
         # title = data.select('.rtddt font').text
-        print(data)
+        print(data.select('font'))
         link = data['href']
         content += '{}\n\n'.format(link)
     return content
