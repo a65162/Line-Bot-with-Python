@@ -56,13 +56,11 @@ def apple_news():
     soup = BeautifulSoup(res.text, 'html.parser')
     content = ""
     for index, data in enumerate(soup.select('.rtddt a'), 0):
-        if index == 15:
+        if index == 5:
             return content
-        if head in data['href']:
-            link = data['href']
-        else:
-            link = head + data['href']
-        content += '{}\n\n'.format(link)
+        title = data.select('.rtddt font')
+        link = data['href']
+        content += '{}\n\n'.format(title,link)
     return content
     
 @handler.add(MessageEvent, message=TextMessage)
